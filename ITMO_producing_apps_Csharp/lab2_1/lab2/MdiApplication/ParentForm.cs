@@ -37,5 +37,38 @@ namespace MdiApplication
         {
 
         }
+
+        private void ParentForm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStrip1_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            switch (e.ClickedItem.Tag.ToString())
+            {
+                case "NewDoc":
+                    ChildForm newChild = new ChildForm();
+                    newChild.MdiParent = this;
+                    newChild.Show();
+                    newChild.Text = newChild.Text + " " + ++openDocuments;
+                    break;
+                case "Cascade":
+                    this.LayoutMdi(System.Windows.Forms.MdiLayout.Cascade);
+                    break;
+
+            }
+        }
     }
 }
