@@ -5,6 +5,10 @@ namespace MdiApplication
         public ParentForm()
         {
             InitializeComponent();
+           
+                spData.Text = Convert.ToString(System.DateTime.Today.ToLongDateString());
+            
+
         }
 
         private void ExitMenuItem_Click(object sender, EventArgs e)
@@ -15,13 +19,17 @@ namespace MdiApplication
         private void WindowCascadeMenuItem_Click(object sender, EventArgs e)
         {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.Cascade);
+            spWin.Text = "Windows is cascade";
+            
+
 
         }
 
         private void WindowsTileMenuItem_Click(object sender, EventArgs e)
         {
             this.LayoutMdi(System.Windows.Forms.MdiLayout.TileHorizontal);
-
+         
+            spWin.Text = "Windows is horizontal";
         }
 
         private void NewMenuItem_Click(object sender, EventArgs e)
@@ -69,6 +77,18 @@ namespace MdiApplication
                     break;
 
             }
+        }
+
+        private void spWin_Click(object sender, EventArgs e)
+        {
+            spWin.Text = "Windows is cascade";
+            spWin.Text = "Windows is horizontal";
+
+        }
+
+        private void spData_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
