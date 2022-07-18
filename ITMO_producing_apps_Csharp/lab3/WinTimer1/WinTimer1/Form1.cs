@@ -20,8 +20,14 @@ namespace WinTimer1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserControl1 userControl2 = new UserControl1();
-            userControl2.TimeEnabled = !userControl2.TimeEnabled;
+            timer1.Enabled = !timer1.Enabled;        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label1.Text = DateTime.Now.ToLongTimeString();
+
         }
+
+       
     }
 }
