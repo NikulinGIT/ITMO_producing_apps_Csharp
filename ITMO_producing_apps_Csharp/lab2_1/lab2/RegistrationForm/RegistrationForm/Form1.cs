@@ -92,7 +92,7 @@ namespace RegistrationForm
 
 
 
-        private void textBox2_Validated(object sender, EventArgs e)
+        private void textBox2_Validated(object sender, System.ComponentModel.CancelEventArgs e)
         {
 
             if (textBox2.Text == "")
