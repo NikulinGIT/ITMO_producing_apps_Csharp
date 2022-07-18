@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+using System.Drawing;
 namespace RegistrationForm
 {
     public partial class Form1 : Form
@@ -20,6 +22,8 @@ namespace RegistrationForm
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            
+         
             if (checkBox1.Checked == true)
             {
                 Label lbl = new Label();
@@ -37,6 +41,8 @@ namespace RegistrationForm
                 txt.TabIndex = 1;
                 txt.Text = "";
                 groupBox1.Controls.Add(txt);
+        //        txt.KeyPress += new
+        // System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             }
             else
             {
@@ -49,6 +55,64 @@ namespace RegistrationForm
                 }
 
             }
+           
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+                MessageBox.Show("Поле Name не может содержать цифры");
+            }
+            errorProvider1.SetError(textBox1, "Must be letter");
+
+        }
+
+        //private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        //{
+        //    if (!char.IsDigit(e.KeyChar))
+        //    {
+        //        e.Handled = true;
+        //        MessageBox.Show("Поле PIN не может содержать буквы");
+        //    }
+        //}
+
+        private void checkBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+         {
+          }
+
+
+    
+
+
+
+        private void textBox2_Validated(object sender, EventArgs e)
+        {
+
+            if (textBox2.Text == "")
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                try
+                {
+                    double.Parse(textBox2.Text);
+                    e.Cancel = false;
+                }
+                catch
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Поле PIN не может содержать буквы");
+                }
+            }
+
         }
     }
 }
