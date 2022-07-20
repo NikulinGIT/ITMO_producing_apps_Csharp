@@ -117,9 +117,46 @@ namespace test_DataBase
                     var command = new SqlCommand(deleteQuery, database.getConnection());
                     command.ExecuteNonQuery();
                 }
-            
+                if (rowState == RowState.Modified)
+                {
+                    var ID = dataGridView1.Rows[index].Cells[0].Value.ToString();
+                    var ID_customer = dataGridView1.Rows[index].Cells[1].Value.ToString();
+                    var Address = dataGridView1.Rows[index].Cells[2].Value.ToString();
+                    var Order_amount = dataGridView1.Rows[index].Cells[3].Value.ToString();
+                    var ID_executor = dataGridView1.Rows[index].Cells[4].Value.ToString();
+
+                    var changeQuery = $"update MainTable2 set ID='{ID}',ID_customer='{ID_customer}',Address='{Address}',Order_amount='{Order_amount}',ID_executor='{ID_executor}'";
+                    var command=new SqlCommand(changeQuery, database.getConnection());
+                    command.ExecuteNonQuery();
+                }
+
+
+
+
+
+
             }
             database.closeConnection();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Update();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Change();
+        }
+        private void Change()
+        { var selectedRowIndex = dataGridView1.CurrentCell.RowIndex;
+            var ID_customer = textBox1.Text;
+            var Address = textBox2.Text;
+            var Order_amount = textBox3.Text;
+            var ID_executor = textBox4.Text;
+
+        }
+            
+        
     }
 }
